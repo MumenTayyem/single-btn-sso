@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<Configuration strict="true">
+	<Appenders>
+		<Appender name="CONSOLE" type="Console">
+			<Layout pattern="%d{ABSOLUTE} %-5p [%t][%c{1}:%L] %m%n" type="PatternLayout" />
+		</Appender>
+	</Appenders>
+
+	<Loggers>
+		<Logger level="DEBUG" name="com.liferay.portal.security.access.control" />
+		<Logger level="DEBUG" name="com.liferay.portal.security.service.access.policy" />
+	</Loggers>
+</Configuration>

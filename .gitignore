@@ -1,0 +1,16 @@
+.agents/
+.aider*
+.claude/
+.clinerules
+.cursor/
+.cursorrules
+.gemini/
+.github/copilot-instructions.md
+.mcp.json
+.windsurf/
+.windsurfrules
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+
+provision.sh

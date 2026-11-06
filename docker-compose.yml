@@ -1,0 +1,31 @@
+name: dge-sso
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    command: start-dev --import-realm --http-port=8180
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8180:8180"
+    networks:
+      default:
+        aliases:
+          - keycloak.localtest.me
+    volumes:
+      - ./keycloak/realm-demo.json:/opt/keycloak/data/import/realm-demo.json:ro
+
+  liferay:
+    image: liferay/dxp:2026.q1.13-lts
+    depends_on:
+      - keycloak
+    ports:
+      - "8080:8080"
+      - "11311:11311"
+    environment:
+      LIFERAY_JVM_OPTS: -Xmx4g
+    volumes:
+      - ./liferay/files:/mnt/liferay/files:ro
+      - ./liferay/deploy:/mnt/liferay/deploy
+      - ./liferay/client-extensions:/opt/liferay/osgi/client-extensions

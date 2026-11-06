@@ -1,0 +1,216 @@
+{
+  "realm": "demo",
+  "enabled": true,
+  "sslRequired": "none",
+  "loginTheme": "keycloak",
+  "groups": [
+    {
+      "name": "ENT-MAIN-Admins"
+    },
+    {
+      "name": "ENT-X-Admins"
+    },
+    {
+      "name": "ENT-Y-Editors"
+    }
+  ],
+  "users": [
+    {
+      "username": "u.x",
+      "email": "u.x@demo.test",
+      "firstName": "Ux",
+      "lastName": "User",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "test",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/ENT-X-Admins"
+      ]
+    },
+    {
+      "username": "u.y",
+      "email": "u.y@demo.test",
+      "firstName": "Uy",
+      "lastName": "User",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "test",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/ENT-Y-Editors"
+      ]
+    },
+    {
+      "username": "u.both",
+      "email": "u.both@demo.test",
+      "firstName": "Uboth",
+      "lastName": "User",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "test",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/ENT-X-Admins",
+        "/ENT-Y-Editors"
+      ]
+    },
+    {
+      "username": "u.central",
+      "email": "u.central@demo.test",
+      "firstName": "Ucentral",
+      "lastName": "User",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "test",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/ENT-MAIN-Admins",
+        "/ENT-X-Admins",
+        "/ENT-Y-Editors"
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "entry-router",
+      "name": "Entry router (client extension on main)",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": [
+        "http://main.localtest.me:8080/*",
+        "http://localhost:8080/*"
+      ],
+      "webOrigins": [
+        "http://main.localtest.me:8080",
+        "http://localhost:8080"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": ""
+      },
+      "protocolMappers": [
+        {
+          "name": "entity-groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "config": {
+            "full.path": "false",
+            "claim.name": "groups",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "liferay-main",
+      "name": "Liferay instance main",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "secret-main",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": [
+        "http://main.localtest.me:8080/c/portal/login/openidconnect"
+      ],
+      "webOrigins": [
+        "http://main.localtest.me:8080"
+      ],
+      "protocolMappers": [
+        {
+          "name": "entity-groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "config": {
+            "full.path": "false",
+            "claim.name": "groups",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "liferay-x",
+      "name": "Liferay instance x",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "secret-x",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": [
+        "http://x.localtest.me:8080/c/portal/login/openidconnect"
+      ],
+      "webOrigins": [
+        "http://x.localtest.me:8080"
+      ],
+      "protocolMappers": [
+        {
+          "name": "entity-groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "config": {
+            "full.path": "false",
+            "claim.name": "groups",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "liferay-y",
+      "name": "Liferay instance y",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "secret-y",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": [
+        "http://y.localtest.me:8080/c/portal/login/openidconnect"
+      ],
+      "webOrigins": [
+        "http://y.localtest.me:8080"
+      ],
+      "protocolMappers": [
+        {
+          "name": "entity-groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "config": {
+            "full.path": "false",
+            "claim.name": "groups",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ]
+}

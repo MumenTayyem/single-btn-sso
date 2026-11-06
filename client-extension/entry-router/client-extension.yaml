@@ -1,0 +1,13 @@
+assemble:
+    -   from: static
+        into: static
+entry-router:
+    friendlyURLMapping: entry-router
+    htmlElementName: entry-router
+    instanceable: false
+    name: Entry Router
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        -   "*.js"
+    useESM: false
